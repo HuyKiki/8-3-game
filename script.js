@@ -7,13 +7,18 @@ const cauHoi = [
     },
     {
         cauHoi: "Ai là người phụ nữ đầu tiên bay vào vũ trụ?",
-        dapAn: ["Valentina Tereshkova", "Sally Ride", "Mae Jemison", "Kalpana Chawla"],
+        dapAn: ["Mae Jemison", "Sally Ride", "Valentina Tereshkova", "Kalpana Chawla"],
         dapAnDung: "Valentina Tereshkova"
     },
     {
         cauHoi: "Hoa nào thường được tặng trong ngày 8/3?",
-        dapAn: ["Hoa hồng", "Hoa tulip", "Hoa ly", "Hoa cúc"],
+        dapAn: ["Hoa lan", "Hoa hồng", "Hoa ly", "Tất cả đều sai"],
         dapAnDung: "Hoa hồng"
+    },
+    {
+        cauHoi: "Ai là đứa con gái cao nhất 10A",
+        dapAn: ["Ngô Phương Linh", "Phạm Vũ Anh Thư", "Đỗ Vũ Quỳnh Chi", "Tất cả đều đúng"],
+        dapAnDung: "Ngô Phương Linh"
     }
 ];
 
@@ -51,9 +56,9 @@ function kiemTraDapAn(da) {
     const cauHoiData = cauHoi[cauHoiHienTai];
     if (da === cauHoiData.dapAnDung) {
         diem++;
-        thongBaoElement.textContent = "Chính xác! Bạn được 1 điểm.";
+        thongBaoElement.textContent = "Quá chuẩn! +1 tri thức.";
     } else {
-        thongBaoElement.textContent = "Sai rồi! Đáp án đúng là: " + cauHoiData.dapAnDung;
+        thongBaoElement.textContent = "-1 tri thức! phải là: " + cauHoiData.dapAnDung "chứ";
     }
     diemSoElement.textContent = "Điểm: " + diem;
     cauHoiHienTai++;
@@ -66,13 +71,37 @@ function kiemTraDapAn(da) {
 
 // Hàm kết thúc trò chơi
 function ketThucTroChoi() {
-    Swal.fire({
-        title: 'Chúc mừng!',
-        text: `Bạn đã hoàn thành trò chơi với ${diem} điểm. Chúc bạn một ngày 8/3 thật ý nghĩa!`,
-        icon: 'success',
-        confirmButtonText: 'Chơi lại'
-    }).then(() => {
-        btnBatDau.style.display = 'block';
-        thongBaoElement.textContent = '';
-    });
+    const tongSoCauHoi = cauHoi.length;
+    const tyLeDung = (diem / tongSoCauHoi) * 100; // Tính tỷ lệ đúng (%)
+
+    if (tyLeDung >= 50) {
+        // Nếu tỷ lệ đúng >= 50%, hiển thị thông báo chiến thắng
+        Swal.fire({
+            title: 'Oách xà lách vô cùng!',
+            text: `Bạn đã hoàn thành minigame với ${diem}/${tongSoCauHoi} điểm (${tyLeDung.toFixed(2)}%). Chúc bạn một ngày 8/3 thật ý nghĩa!`,
+            icon: 'success',
+            confirmButtonText: 'Cay không, chơi lại đê :))'
+        }).then(() => {
+            resetTroChoi(); // Reset trò chơi để chơi lại
+        });
+    } else {
+        // Nếu tỷ lệ đúng < 50%, hiển thị thông báo thất bại
+        Swal.fire({
+            title: 'Quá thất bại!',
+            text: `Bạn chỉ đạt được ${diem}/${tongSoCauHoi} điểm (${tyLeDung.toFixed(2)}%). Không giòn rồi!`,
+            icon: 'error',
+            confirmButtonText: 'Chơi lại thôi :(('
+        }).then(() => {
+            resetTroChoi(); // Reset trò chơi để chơi lại
+        });
+    }
+}
+
+// Hàm reset trò chơi
+function resetTroChoi() {
+    diem = 0;
+    cauHoiHienTai = 0;
+    diemSoElement.textContent = "Điểm: 0";
+    thongBaoElement.textContent = '';
+    btnBatDau.style.display = 'block';
 }
