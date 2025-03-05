@@ -4,24 +4,18 @@ const cauHoi = [
         cauHoi: "Ngày Quốc tế Phụ nữ 8/3 bắt nguồn từ quốc gia nào?",
         dapAn: ["Mỹ", "Nga", "Pháp", "Đức"],
         dapAnDung: "Mỹ",
-        hinhAnh: "https://images.unsplash.com/photo-1490750967868-88aa4486c946"
+        hinhAnh: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9"
     },
     {
         cauHoi: "Ai là người phụ nữ đầu tiên bay vào vũ trụ?",
-        dapAn: ["Mae Jemison", "Sally Ride", "Valentina Tereshkova", "Kalpana Chawla"],
+        dapAn: ["Valentina Tereshkova", "Sally Ride", "Mae Jemison", "Kalpana Chawla"],
         dapAnDung: "Valentina Tereshkova",
-        hinhAnh: "https://images.unsplash.com/photo-1490750967868-88aa4486c946"
+        hinhAnh: "https://images.unsplash.com/photo-1587502536575-6dfba0a6e017"
     },
     {
         cauHoi: "Hoa nào thường được tặng trong ngày 8/3?",
-        dapAn: ["Hoa lan", "Hoa hồng", "Hoa ly", "Tất cả đều sai"],
+        dapAn: ["Hoa hồng", "Hoa tulip", "Hoa ly", "Hoa cúc"],
         dapAnDung: "Hoa hồng",
-        hinhAnh: "https://images.unsplash.com/photo-1490750967868-88aa4486c946"
-    },
-    {
-        cauHoi: "Ai là đứa con gái cao nhất 10A",
-        dapAn: ["Ngô Phương Linh", "Phạm Vũ Anh Thư", "Đỗ Vũ Quỳnh Chi", "Tất cả đều đúng"],
-        dapAnDung: "Ngô Phương Linh",
         hinhAnh: "https://images.unsplash.com/photo-1490750967868-88aa4486c946"
     }
 ];
@@ -75,9 +69,9 @@ function kiemTraDapAn(da) {
     const cauHoiData = cauHoi[cauHoiHienTai];
     if (da === cauHoiData.dapAnDung) {
         diem++;
-        thongBaoElement.textContent = "Quá chuẩn! +1 tri thức.";
+        thongBaoElement.textContent = "Chính xác! Bạn được 1 điểm.";
     } else {
-        thongBaoElement.textContent = "-1 tri thức! phải là: " + cauHoiData.dapAnDung "chứ";
+        thongBaoElement.textContent = "Sai rồi! Đáp án đúng là: " + cauHoiData.dapAnDung;
     }
     diemSoElement.textContent = "Điểm: " + diem;
     cauHoiHienTai++;
@@ -91,27 +85,25 @@ function kiemTraDapAn(da) {
 // Hàm kết thúc trò chơi
 function ketThucTroChoi() {
     const tongSoCauHoi = cauHoi.length;
-    const tyLeDung = (diem / tongSoCauHoi) * 100; // Tính tỷ lệ đúng (%)
+    const tyLeDung = (diem / tongSoCauHoi) * 100;
 
     if (tyLeDung >= 50) {
-        // Nếu tỷ lệ đúng >= 50%, hiển thị thông báo chiến thắng
         Swal.fire({
-            title: 'Oách xà lách vô cùng!',
-            text: `Bạn đã hoàn thành minigame với ${diem}/${tongSoCauHoi} điểm (${tyLeDung.toFixed(2)}%). Chúc bạn một ngày 8/3 thật ý nghĩa!`,
+            title: 'Chúc mừng!',
+            text: `Bạn đã hoàn thành trò chơi với ${diem}/${tongSoCauHoi} điểm (${tyLeDung.toFixed(2)}%). Chúc bạn một ngày 8/3 thật ý nghĩa!`,
             icon: 'success',
-            confirmButtonText: 'Cay không, chơi lại đê :))'
+            confirmButtonText: 'Chơi lại'
         }).then(() => {
-            resetTroChoi(); // Reset trò chơi để chơi lại
+            resetTroChoi();
         });
     } else {
-        // Nếu tỷ lệ đúng < 50%, hiển thị thông báo thất bại
         Swal.fire({
-            title: 'Quá thất bại!',
-            text: `Bạn chỉ đạt được ${diem}/${tongSoCauHoi} điểm (${tyLeDung.toFixed(2)}%). Không giòn rồi!`,
+            title: 'Thất bại!',
+            text: `Bạn chỉ đạt được ${diem}/${tongSoCauHoi} điểm (${tyLeDung.toFixed(2)}%). Hãy thử lại nhé!`,
             icon: 'error',
-            confirmButtonText: 'Chơi lại thôi :(('
+            confirmButtonText: 'Chơi lại'
         }).then(() => {
-            resetTroChoi(); // Reset trò chơi để chơi lại
+            resetTroChoi();
         });
     }
 }
