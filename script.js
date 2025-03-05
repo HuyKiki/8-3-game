@@ -2,21 +2,21 @@
 const cauHoi = [
     {
         cauHoi: "Ngày Quốc tế Phụ nữ 8/3 bắt nguồn từ quốc gia nào?",
-        dapAn: ["Mỹ", "Nga", "Pháp", "Đức"],
+        dapAn: ["Việt Nam", "Mỹ", "Pháp", "Đức"],
         dapAnDung: "Mỹ",
-        hinhAnh: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9"
+        hinhAnh: "https://vnn-imgs-f.vgcloud.vn/2018/03/07/11/hanh-trinh-hinh-thanh-ngay-quoc-te-phu-nu-8-3-3.jpg"
     },
     {
         cauHoi: "Ai là người phụ nữ đầu tiên bay vào vũ trụ?",
-        dapAn: ["Valentina Tereshkova", "Sally Ride", "Mae Jemison", "Kalpana Chawla"],
+        dapAn: ["Sally Ride", "Mae Jemison", "Kalpana Chawla", "Valentina Tereshkova"],
         dapAnDung: "Valentina Tereshkova",
-        hinhAnh: "https://images.unsplash.com/photo-1587502536575-6dfba0a6e017"
+        hinhAnh: "https://nghiencuuquocte.org/wp-content/uploads/2022/06/16.jpg"
     },
     {
         cauHoi: "Hoa nào thường được tặng trong ngày 8/3?",
-        dapAn: ["Hoa hồng", "Hoa tulip", "Hoa ly", "Hoa cúc"],
+        dapAn: ["Hoa lan", "", "Hoa hồng", "Tất cả đều đúng"],
         dapAnDung: "Hoa hồng",
-        hinhAnh: "https://images.unsplash.com/photo-1490750967868-88aa4486c946"
+        hinhAnh: "https://cdn-media.sforum.vn/storage/app/media/wp-content/uploads/2024/02/nen-tang-hoa-gi-ngay-8-3-1.jpg"
     }
 ];
 
@@ -69,9 +69,9 @@ function kiemTraDapAn(da) {
     const cauHoiData = cauHoi[cauHoiHienTai];
     if (da === cauHoiData.dapAnDung) {
         diem++;
-        thongBaoElement.textContent = "Chính xác! Bạn được 1 điểm.";
+        thongBaoElement.textContent = "Oách xà lách! +1 tri thức.";
     } else {
-        thongBaoElement.textContent = "Sai rồi! Đáp án đúng là: " + cauHoiData.dapAnDung;
+        thongBaoElement.textContent = "-1 tri thức! Phải là: " + cauHoiData.dapAnDung;
     }
     diemSoElement.textContent = "Điểm: " + diem;
     cauHoiHienTai++;
@@ -89,19 +89,19 @@ function ketThucTroChoi() {
 
     if (tyLeDung >= 50) {
         Swal.fire({
-            title: 'Chúc mừng!',
-            text: `Bạn đã hoàn thành trò chơi với ${diem}/${tongSoCauHoi} điểm (${tyLeDung.toFixed(2)}%). Chúc bạn một ngày 8/3 thật ý nghĩa!`,
+            title: 'Thủng nóc xuyên trần!',
+            text: `Bạn đã hoàn thành minigame với ${diem}/${tongSoCauHoi} điểm (${tyLeDung.toFixed(2)}%). Hay không? hay thế còn gì :))`,
             icon: 'success',
-            confirmButtonText: 'Chơi lại'
+            confirmButtonText: 'Chơi lại không?'
         }).then(() => {
             resetTroChoi();
         });
     } else {
         Swal.fire({
-            title: 'Thất bại!',
-            text: `Bạn chỉ đạt được ${diem}/${tongSoCauHoi} điểm (${tyLeDung.toFixed(2)}%). Hãy thử lại nhé!`,
+            title: 'Hết cứu!',
+            text: `Bạn chỉ đạt được ${diem}/${tongSoCauHoi} điểm (${tyLeDung.toFixed(2)}%). Cay không, cay phết :((`,
             icon: 'error',
-            confirmButtonText: 'Chơi lại'
+            confirmButtonText: 'Chơi lại cho chắc'
         }).then(() => {
             resetTroChoi();
         });
