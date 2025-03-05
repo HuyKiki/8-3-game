@@ -14,7 +14,7 @@ const cauHoi = [
     },
     {
         cauHoi: "Hoa nào thường được tặng trong ngày 8/3?",
-        dapAn: ["Hoa lan", "", "Hoa hồng", "Tất cả đều đúng"],
+        dapAn: ["Hoa lan", "Hoa cúc", "Hoa hồng", "Tất cả đều đúng"],
         dapAnDung: "Hoa hồng",
         hinhAnh: "https://cdn-media.sforum.vn/storage/app/media/wp-content/uploads/2024/02/nen-tang-hoa-gi-ngay-8-3-1.jpg"
     }
