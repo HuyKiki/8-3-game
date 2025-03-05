@@ -15,6 +15,8 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
 }
 
 h1 {
@@ -36,9 +38,35 @@ button:hover {
     background-color: #d81b60;
 }
 
-.ket-qua {
+.dap-an {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dap-an button {
+    background-color: #ff80ab;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dap-an button:hover {
+    background-color: #ff4081;
+}
+
+.thong-bao {
     margin-top: 20px;
     font-size: 18px;
     color: #e91e63;
     font-weight: bold;
+}
+
+.diem-so {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #e91e63;
 }
