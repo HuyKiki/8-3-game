@@ -3,22 +3,26 @@ const cauHoi = [
     {
         cauHoi: "Ngày Quốc tế Phụ nữ 8/3 bắt nguồn từ quốc gia nào?",
         dapAn: ["Mỹ", "Nga", "Pháp", "Đức"],
-        dapAnDung: "Mỹ"
+        dapAnDung: "Mỹ",
+        hinhAnh: "https://images.unsplash.com/photo-1490750967868-88aa4486c946"
     },
     {
         cauHoi: "Ai là người phụ nữ đầu tiên bay vào vũ trụ?",
         dapAn: ["Mae Jemison", "Sally Ride", "Valentina Tereshkova", "Kalpana Chawla"],
-        dapAnDung: "Valentina Tereshkova"
+        dapAnDung: "Valentina Tereshkova",
+        hinhAnh: "https://images.unsplash.com/photo-1490750967868-88aa4486c946"
     },
     {
         cauHoi: "Hoa nào thường được tặng trong ngày 8/3?",
         dapAn: ["Hoa lan", "Hoa hồng", "Hoa ly", "Tất cả đều sai"],
-        dapAnDung: "Hoa hồng"
+        dapAnDung: "Hoa hồng",
+        hinhAnh: "https://images.unsplash.com/photo-1490750967868-88aa4486c946"
     },
     {
         cauHoi: "Ai là đứa con gái cao nhất 10A",
         dapAn: ["Ngô Phương Linh", "Phạm Vũ Anh Thư", "Đỗ Vũ Quỳnh Chi", "Tất cả đều đúng"],
-        dapAnDung: "Ngô Phương Linh"
+        dapAnDung: "Ngô Phương Linh",
+        hinhAnh: "https://images.unsplash.com/photo-1490750967868-88aa4486c946"
     }
 ];
 
@@ -35,9 +39,7 @@ const diemSoElement = document.getElementById('diemSo');
 
 // Hàm bắt đầu trò chơi
 btnBatDau.addEventListener('click', () => {
-    diem = 0;
-    cauHoiHienTai = 0;
-    diemSoElement.textContent = "Điểm: 0";
+    resetTroChoi();
     hienThiCauHoi();
     btnBatDau.style.display = 'none';
 });
@@ -46,6 +48,23 @@ btnBatDau.addEventListener('click', () => {
 function hienThiCauHoi() {
     const cauHoiData = cauHoi[cauHoiHienTai];
     cauHoiElement.textContent = cauHoiData.cauHoi;
+
+    // Hiển thị hình ảnh
+    const hinhAnhElement = document.createElement('img');
+    hinhAnhElement.src = cauHoiData.hinhAnh;
+    hinhAnhElement.alt = "Hình ảnh minh họa";
+    hinhAnhElement.classList.add('hinh-anh');
+
+    // Xóa hình ảnh cũ (nếu có)
+    const hinhAnhCu = document.querySelector('.hinh-anh');
+    if (hinhAnhCu) {
+        hinhAnhCu.remove();
+    }
+
+    // Chèn hình ảnh vào trước câu hỏi
+    cauHoiElement.parentNode.insertBefore(hinhAnhElement, cauHoiElement);
+
+    // Hiển thị đáp án
     dapAnElement.innerHTML = cauHoiData.dapAn.map(da => `
         <button onclick="kiemTraDapAn('${da}')">${da}</button>
     `).join('');
