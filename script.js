@@ -62,6 +62,9 @@ function hienThiCauHoi() {
     dapAnElement.innerHTML = cauHoiData.dapAn.map(da => `
         <button onclick="kiemTraDapAn('${da}')">${da}</button>
     `).join('');
+
+    // Reset thông báo đáp án
+    thongBaoElement.textContent = ''; // Xóa thông báo cũ
 }
 
 // Hàm kiểm tra đáp án
@@ -69,7 +72,7 @@ function kiemTraDapAn(da) {
     const cauHoiData = cauHoi[cauHoiHienTai];
     if (da === cauHoiData.dapAnDung) {
         diem++;
-        thongBaoElement.textContent = "Oách xà lách! +1 tri thức.";
+        thongBaoElement.textContent = "Oách xà lách! +1 tri thức. Đáp án đúng: " + cauHoiData.dapAnDung;
     } else {
         thongBaoElement.textContent = "-1 tri thức! Phải là: " + cauHoiData.dapAnDung;
     }
