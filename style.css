@@ -36,11 +36,12 @@ body {
     margin-bottom: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hinh-anh:hover {
     transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Tiêu đề */
@@ -49,6 +50,7 @@ h1 {
     font-weight: 600;
     margin-bottom: 20px;
     color: #1d1d1f;
+    animation: slideIn 0.5s ease-in-out;
 }
 
 /* Nút bấm */
@@ -60,19 +62,21 @@ button {
     font-size: 1rem;
     border-radius: 12px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     margin-top: 20px;
 }
 
 button:hover {
     background-color: #0066cc;
     transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Câu hỏi và đáp án */
 #cauHoi {
     font-size: 1.25rem;
     margin-bottom: 20px;
+    animation: slideIn 0.5s ease-in-out;
 }
 
 .dap-an {
@@ -88,32 +92,47 @@ button:hover {
     padding: 12px;
     border-radius: 12px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .dap-an button:hover {
     background-color: #007aff;
     color: #ffffff;
     transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Thông báo và điểm số */
+.thong-bao-container {
+    margin-top: 20px; /* Khoảng cách với các phần tử phía trên */
+    padding: 15px; /* Khoảng cách bên trong hộp */
+    border: 2px solid #4CAF50; /* Viền hộp */
+    border-radius: 10px; /* Bo góc */
+    background-color: #f9f9f9; /* Màu nền */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+    text-align: center; /* Căn giữa nội dung */
+}
+
 .thong-bao {
-    margin-top: 20px;
-    font-size: 1rem;
-    color: #007aff;
-    font-weight: 500;
+    font-size: 18px; /* Cỡ chữ thông báo */
+    color: #333; /* Màu chữ */
+    margin-bottom: 10px; /* Khoảng cách với phần tử bên dưới */
 }
 
 .diem-so {
-    margin-top: 20px;
-    font-size: 1.25rem;
-    color: #1d1d1f;
-    font-weight: 600;
+    font-size: 20px; /* Cỡ chữ điểm số */
+    font-weight: bold; /* Đậm */
+    color: #4CAF50; /* Màu chữ */
 }
 
 /* Hiệu ứng fade-in */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+/* Hiệu ứng slide-in */
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
