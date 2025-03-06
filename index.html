@@ -6,6 +6,29 @@
     <title>Mini game 8/3 từ lớp 10A</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .thong-bao-container {
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .thong-bao {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .diem-so {
+            font-size: 20px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -13,8 +36,10 @@
         <p id="cauHoi"></p>
         <div id="dapAn" class="dap-an"></div>
         <button id="btnBatDau">Bắt đầu</button>
-        <div id="thongBao" class="thong-bao"></div>
-        <div id="diemSo" class="diem-so">Điểm: 0</div>
+        <div class="thong-bao-container">
+            <div id="thongBao" class="thong-bao"></div>
+            <div id="diemSo" class="diem-so">Điểm: 0</div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
