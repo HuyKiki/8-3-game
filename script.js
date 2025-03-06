@@ -74,22 +74,13 @@ function kiemTraDapAn(da) {
         thongBaoElement.textContent = "-1 tri thức! Phải là: " + cauHoiData.dapAnDung;
     }
     
-    diemSoElement.textContent = `Điểm: ${diem}`;
-    
-    Swal.fire({
-        title: "Kết quả!",
-        text: thongDiep,
-        icon: icon,
-        confirmButtonText: "Tiếp tục"
-    }).then(() => {
-        cauHoiHienTai++;
-        if (cauHoiHienTai < cauHoi.length) {
-            hienThiCauHoi();
-        } else {
-            ketThucTroChoi();
-        }
-    });
-}
+    diemSoElement.textContent = "Điểm: " + diem;
+    cauHoiHienTai++;
+    if (cauHoiHienTai < cauHoi.length) {
+        hienThiCauHoi();
+    } else {
+        ketThucTroChoi();
+    }
 
 // Hàm kết thúc trò chơi
 function ketThucTroChoi() {
