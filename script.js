@@ -63,6 +63,7 @@ function hienThiCauHoi() {
         <button onclick="kiemTraDapAn('${da}')">${da}</button>
     `).join('');
 }
+
 // Hàm kiểm tra đáp án
 function kiemTraDapAn(da) {
     const cauHoiData = cauHoi[cauHoiHienTai];
@@ -72,7 +73,6 @@ function kiemTraDapAn(da) {
     } else {
         thongBaoElement.textContent = "-1 tri thức! Phải là: " + cauHoiData.dapAnDung;
     }
-    
     diemSoElement.textContent = "Điểm: " + diem;
     cauHoiHienTai++;
     if (cauHoiHienTai < cauHoi.length) {
@@ -80,6 +80,7 @@ function kiemTraDapAn(da) {
     } else {
         ketThucTroChoi();
     }
+}
 
 // Hàm kết thúc trò chơi
 function ketThucTroChoi() {
