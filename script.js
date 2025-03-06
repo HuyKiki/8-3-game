@@ -63,7 +63,6 @@ function hienThiCauHoi() {
         <button onclick="kiemTraDapAn('${da}')">${da}</button>
     `).join('');
 }
-
 // Hàm kiểm tra đáp án
 function kiemTraDapAn(da) {
     const cauHoiData = cauHoi[cauHoiHienTai];
